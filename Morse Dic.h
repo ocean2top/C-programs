@@ -1,0 +1,1 @@
+std::string dictionary(std::string cha);

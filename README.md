@@ -1,2 +1,2 @@
 # C-programs
-C++ practice programs
+Mor-se Coding Program
