@@ -1,2 +1,2 @@
-# C-programs
+# Morse Code
 Mor-se Coding Program
