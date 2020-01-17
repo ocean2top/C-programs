@@ -4,7 +4,9 @@
 
 #include <iostream>
 #include <sstream>
+#include <string.h>
 #include <stdlib.h> //Convert string to integer atoi()
+#include <list>
 #include "Morse Dic.h"
 #include "Checkdatatype.h"
 using namespace std;
@@ -12,7 +14,7 @@ using namespace std;
 int MainMenu()
 {
 	string choice;
-	bool repeat = true;
+  bool repeat = true;
 	while (repeat)
 	{
 		cout << "         MAINMENU\n";
@@ -22,7 +24,7 @@ int MainMenu()
 		cout << "9. Quit\n";
 		cout << "-------------------------\n\n";
 		cout << "What do you want to do?: ";
-		cin >> choice;
+		getline(cin, choice);
 		if (!Validation(choice))
 		{
 			cout << "Invalid number\n\n";
@@ -65,24 +67,58 @@ int Selection(int n)
   return 0;
 }
 
-string converter(int d)
+string GetWord(int d)
 {
-	string word;
-
+  string word;
 	switch (d)
 	{
 	case 1:
 		cout << '\n';
 		cout << "Type a alphabet senteces that you want to convert into Morse code: ";
-		cin >> word;
+    getline(cin, word);
     break;
 	case 2:
 		cout << '\n';
 		cout << "Type a Morse code that you want to convert into alphabet senctecs: ";
-		cin >> word;
+    getline(cin, word);
     break;
 	}
+  
 	return word;
+}
+
+void AMC(string text)
+{
+	int length = text.size();
+	for (int i = 0; i < length; i++)
+	{
+		string letter = dictionary(text[i]);
+		cout << letter;
+		if (i < length - 1)
+			cout << ' ';
+	}
+}
+
+void MAC(string text)
+{
+  cout << "Test 1";
+  /*int maximum_size = 100;
+  char ntext[maximum_size];
+  stringstream str(text);
+  str >> ntext;
+  int length = strlen(ntext);
+
+  for (int i = 0; i < length; i++)
+  {
+    string temp;
+    stringstream let;
+    let << ntext[i];
+    let >> temp;
+    string letter = dictionary(temp);
+    cout << letter;
+    if (i < length-1)
+      cout << ' ';
+  }*/
 }
 
 void Display()
@@ -94,8 +130,16 @@ int main()
 {
 	int select = MainMenu();
 	int decide = Selection(select);
-	string text = converter(decide);
-	string letter = dictionary(text);
-	cout << letter;
+	string sentence = GetWord(decide);
+	cout << "You typed: " << sentence << '\n';
+	if (decide == 1)
+	{
+		AMC(sentence);
+	}
+	else if (decide == 2)
+	{
+		MAC(sentence);
+	}
+
 	return 0;
 }

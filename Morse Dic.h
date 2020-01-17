@@ -1,1 +1,2 @@
-std::string dictionary(std::string cha);
+std::string dictionary(char cha);
+//char* dictionary(std::string cha);
